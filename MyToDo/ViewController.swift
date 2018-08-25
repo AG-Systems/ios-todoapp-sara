@@ -1,16 +1,8 @@
-//
-//  ViewController.swift
-//  MyToDo
-//
-//  Created by Bruno Philipe on 7/1/17.
-//  Copyright © 2017 Bruno Philipe. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UITableViewController
 {
-	private var todoItems = [ToDoItem]()
+    private var todoItems = [ToDoItem]()
 
 	override func viewDidLoad()
 	{
@@ -29,7 +21,7 @@ class ViewController: UITableViewController
 			selector: #selector(UIApplicationDelegate.applicationDidEnterBackground(_:)),
 			name: NSNotification.Name.UIApplicationDidEnterBackground,
 			object: nil)
-
+        // self.addNewToDoItem(title: "I love you Sara ❤️")
 		do
 		{
 			// Try to load from persistence
@@ -37,7 +29,8 @@ class ViewController: UITableViewController
 		}
 		catch let error as NSError
 		{
-			if error.domain == NSCocoaErrorDomain && error.code == NSFileReadNoSuchFileError
+            self.addNewToDoItem(title: "I love you Sara ❤️")
+            if error.domain == NSCocoaErrorDomain && error.code == NSFileReadNoSuchFileError
 			{
 				NSLog("No persistence file found, not necesserially an error...")
 			}
@@ -76,7 +69,7 @@ class ViewController: UITableViewController
 		// Dispose of any resources that can be recreated.
 	}
 
-	func didTapAddItemButton(_ sender: UIBarButtonItem)
+	@objc func didTapAddItemButton(_ sender: UIBarButtonItem)
 	{
 		// Create an alert
 		let alert = UIAlertController(
@@ -94,7 +87,7 @@ class ViewController: UITableViewController
 		alert.addAction(UIAlertAction(title: "OK", style: .default, handler:
 		{ (_) in
 			// Get the title the user inserted, but only if it is not an empty string
-			if let title = alert.textFields?[0].text, title.characters.count > 0
+			if let title = alert.textFields?[0].text, title.count > 0
 			{
 				self.addNewToDoItem(title: title)
 			}
