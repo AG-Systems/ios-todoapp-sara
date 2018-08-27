@@ -9,10 +9,11 @@ class ViewController: UITableViewController
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 
-		self.title = "To-Do"
+		self.title = "Sara Reminders 😎"
 
 		self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ViewController.didTapAddItemButton(_:)))
 
+        
 		// Setup a notification to let us know when the app is about to close,
 		// and that we should store the user items to persistence. This will call the
 		// applicationDidEnterBackground() function in this class
@@ -49,7 +50,7 @@ class ViewController: UITableViewController
 			}
 		}
 	}
-
+    
 	@objc
 	public func applicationDidEnterBackground(_ notification: NSNotification)
 	{
@@ -73,8 +74,8 @@ class ViewController: UITableViewController
 	{
 		// Create an alert
 		let alert = UIAlertController(
-			title: "New to-do item",
-			message: "Insert the title of the new to-do item:",
+			title: "New reminder for my queen ❤️👑",
+			message: "Insert the title of the new reminder 🅱️:",
 			preferredStyle: .alert)
 
 		// Add a text field to the alert for the new item's title
@@ -155,5 +156,7 @@ class ViewController: UITableViewController
 			todoItems.remove(at: indexPath.row)
 			tableView.deleteRows(at: [indexPath], with: .top)
 		}
+        
+        // Swipe right to delete items
 	}
 }
